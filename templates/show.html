@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+<head>
+	<meta charset="UTF-8">
+	<title>留言展示</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/css/hi.css' %}">
+</head>
+<body>
+<form action="/sub/" method="post" class="smart-green">
+	<h1>留言信息
+		<span>请留下你的信息.</span>
+	</h1>
+	{% for msg in msgs %}
+		<label>
+			<span>姓名 :</span>
+			<input id="name" type="text" name="name" class="error" placeholder="{{ msg.name }}"/>
+			<div class="error-msg"></div>
+		</label>
+
+		<label>
+			<span>邮箱 :</span>
+			<input id="email" type="email" value="" name="email" placeholder="{{ msg.email }}"/>
+			<div class="error-msg"></div>
+		</label>
+
+		<label>
+			<span>联系地址 :</span>
+			<input id="address" type="text" value="" name="address" placeholder="{{ msg.phone_num }}"/>
+			<div class="error-msg"></div>
+		</label>
+
+		<label>
+			<span>留言 :</span>
+			<textarea id="message" name="message"  placeholder="请输入你的建议">{{ msg.messages }}</textarea>
+			<div class="error-msg"></div>
+		</label>
+		<div class="success-msg"></div>
+	{% endfor %}
+</form>
+
+</body>
+</html>
